@@ -2,7 +2,7 @@
 
 This is supposed to be a framework for quickly and easily creating terminal-based adventure games with .NET.
 
-## How it works
+## Usage
 
 ```c#
 var gameBuilder = new GameBuilder();
