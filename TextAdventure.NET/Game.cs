@@ -12,15 +12,18 @@ namespace TextAdventure
 
         public void Launch()
         {
-            Launch(LaunchSettings.Default);
+            Launch(LaunchSettings.DevelopmentMode);
         }
         public void Launch(LaunchSettings launchSettings)
         {
             LaunchSettings = launchSettings;
             GameFlow.Invoke(this);
+            Output.Flush();
+            Error.Flush();
         }
 
         public TextWriter Output => LaunchSettings.Output;
         public TextReader Input => LaunchSettings.Input;
+        public TextWriter Error => LaunchSettings.Error;
     }
 }
