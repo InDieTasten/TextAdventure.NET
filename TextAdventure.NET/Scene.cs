@@ -16,5 +16,10 @@
         {
             Game.Output.WriteLine(text);
         }
+
+        protected void LogFault(string faultMessage)
+        {
+            Game.Error.WriteLine(faultMessage);
+        }
     }
 }
