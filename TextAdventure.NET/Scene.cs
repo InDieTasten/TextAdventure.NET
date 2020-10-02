@@ -1,27 +1,20 @@
-﻿using System;
-
-namespace TextAdventure
+﻿namespace TextAdventure
 {
-    public class Scene
+    public abstract class Scene
     {
         internal Game Game { get; set; }
 
         public Scene()
         {
-            Text = $"The Text property of scene '{GetType().Name}' was not set";
         }
 
-        public string Text { get; set; }
         public virtual bool IsLinear => true;
 
-        public virtual void Enter()
-        {
-            Display(Text);
-        }
+        public abstract void Enter();
 
         protected void Display(string text)
         {
-            Game.OutputMethod(text);
+            Game.Output.WriteLine(text);
         }
     }
 }

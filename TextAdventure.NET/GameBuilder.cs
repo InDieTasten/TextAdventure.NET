@@ -7,7 +7,8 @@ namespace TextAdventure
     public class GameBuilder
     {
         private List<Scene> Scenes { get; set; } = new List<Scene>();
-        private Action<string> OutputMethod { get; set; } = Console.WriteLine;
+
+
 
         public void AddScene<TScene>() where TScene : Scene,new()
         {
@@ -24,22 +25,11 @@ namespace TextAdventure
                 GameFlow = _ => _.Scenes.ForEach(scene =>
                 {
                     scene.Enter();
-                }),
-                OutputMethod = OutputMethod
+                })
             };
             game.Scenes.ForEach(scene => scene.Game = game);
 
             return game;
-        }
-
-        public void DefineOutputMethod(Action<string> outputMethod)
-        {
-            if (outputMethod is null)
-            {
-                throw new ArgumentNullException(nameof(outputMethod));
-            }
-
-            OutputMethod = outputMethod;
         }
 
         private void ValidateSetup(bool displayWarnings)
